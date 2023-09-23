@@ -1,7 +1,7 @@
 # ALL-IN
 this project helps you to choose the best classification algorithm that better suits your dataset 
 
-first it asks you for the preprosecced dataset and it will put it in the RFE(Recursive Feature Elementaion) to rank the best features,
+first it asks you for the preprocessed dataset and it will put it in the RFE(Recursive Feature Elementaion) to rank the best features,
 then it will ask you for the classification algorithm you want to evaluate,
 and then if you chose "KNN" it will ask you for the number of neighbours, same thing goes to decition tree , it asks you for the max depth,
 then it goes to testing window which asks you the ratio of data you want to train and test the model on.

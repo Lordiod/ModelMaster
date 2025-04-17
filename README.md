@@ -1,13 +1,37 @@
-# ALL-IN
-this project helps you to choose the best classification algorithm that better suits your dataset 
+# ModelMaster
 
-first it asks you for the preprocessed dataset and it will put it in the RFE(Recursive Feature Elementaion) to rank the best features,
-then it will ask you for the classification algorithm you want to evaluate,
-and then if you chose "KNN" it will ask you for the number of neighbours, same thing goes to decition tree , it asks you for the max depth,
-then it goes to testing window which asks you the ratio of data you want to train and test the model on.
+ModelMaster is a Python-based GUI application designed to help users select the best classification algorithm for their dataset. The application provides an intuitive interface for loading datasets, selecting features, training models, and evaluating their performance.
 
-after you train and test your model it will show you the accuracy, percision, recall and f1 score of the model , also you can check for its confusion matrix
+## Features
 
-you can save the model using pickle library and load it to check the algorithm has been used (a better model loader will be added in the future)
+- **Dataset Loader**: Load your preprocessed dataset in CSV format.
+- **Feature Ranking**: Uses Recursive Feature Elimination (RFE) to rank the best features in your dataset.
+- **Algorithm Selection**: Choose from the following classification algorithms:
+  - K-Nearest Neighbors (KNN)
+  - Decision Tree
+  - Support Vector Machine (SVM)
+  - Logistic Regression
+- **Model Training and Testing**: Train and test your model with a user-defined train-test split ratio.
+- **Performance Metrics**: View accuracy, precision, recall, F1 score, and confusion matrix.
+- **Model Saving and Loading**: Save trained models using the `pickle` library and reload them for evaluation.
 
-after using my app will help you to choose the best classification algorithm that suits your dataset.
+## How It Works
+
+1. **Load Dataset**: Start by loading your preprocessed dataset.
+2. **Feature Ranking**: The app uses RFE to rank the best features in your dataset.
+3. **Algorithm Selection**: Choose a classification algorithm to evaluate:
+   - For KNN, specify the number of neighbors.
+   - For Decision Tree, specify the maximum depth.
+4. **Train and Test**: Specify the train-test split ratio and train your model.
+5. **View Results**: The app displays performance metrics such as accuracy, precision, recall, F1 score, and confusion matrix.
+6. **Save and Load Models**: Save your trained model for future use or load an existing model to view its details.
+
+## Future Improvements
+
+- Enhanced model loader with additional details about the saved model.
+- Support for additional algorithms and preprocessing steps.
+- Improved error handling and user feedback.
+
+## Why Use ModelMaster?
+
+This app simplifies the process of selecting and evaluating classification algorithms, helping you choose the best one for your dataset. Whether you're a beginner or an experienced data scientist, ALL-IN provides a user-friendly interface to streamline your workflow.

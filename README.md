@@ -26,6 +26,24 @@ ModelMaster is a Python-based GUI application designed to help users select the 
 5. **View Results**: The app displays performance metrics such as accuracy, precision, recall, F1 score, and confusion matrix.
 6. **Save and Load Models**: Save your trained model for future use or load an existing model to view its details.
 
+## Installation
+
+```bash
+git clone https://github.com/yourusername/ModelMaster.git
+cd ModelMaster
+pip install -r requirements.txt
+python main.py
+```
+
+## Requirements
+
+- Python 3.7+
+- scikit-learn
+- pandas
+- numpy
+- tkinter
+- matplotlib
+
 ## Future Improvements
 
 - Enhanced model loader with additional details about the saved model.
@@ -34,4 +52,12 @@ ModelMaster is a Python-based GUI application designed to help users select the 
 
 ## Why Use ModelMaster?
 
-This app simplifies the process of selecting and evaluating classification algorithms, helping you choose the best one for your dataset. Whether you're a beginner or an experienced data scientist, ALL-IN provides a user-friendly interface to streamline your workflow.
+This app simplifies the process of selecting and evaluating classification algorithms, helping you choose the best one for your dataset. Whether you're a beginner or an experienced data scientist, ModelMaster provides a user-friendly interface to streamline your workflow.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

@@ -1,0 +1,11 @@
+# Core dependencies
+numpy>=1.20.0
+pandas>=1.2.0
+matplotlib>=3.4.0
+scikit-learn>=0.24.0
+
+# GUI components
+customtkinter>=4.6.0
+
+# For model persistence
+pickle-mixin>=1.0.2

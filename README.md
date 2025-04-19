@@ -29,10 +29,10 @@ ModelMaster is a Python-based GUI application designed to help users select the 
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/ModelMaster.git
+git clone https://github.com/Lordiod/ModelMaster.git
 cd ModelMaster
 pip install -r requirements.txt
-python main.py
+python model_master_gui.py
 ```
 
 ## Requirements

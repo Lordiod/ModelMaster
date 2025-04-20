@@ -191,7 +191,7 @@ def show_train_test_screen(algorithm_code):
     
     slider = customtkinter.CTkSlider(app, from_=0, to=1, orientation="horizontal", number_of_steps=10)
     slider.place(relx=.5, rely=.4, anchor=tkinter.CENTER) 
-    slider.set(0.3)  # Default to commonly used test size
+    slider.set(0.0)  # Default to commonly used test size
     
     value_label = customtkinter.CTkLabel(app, text=f"Ratio: {slider.get()}", font=("Arial", 10))
     value_label.place(relx=.5, rely=.45, anchor=tkinter.CENTER) 

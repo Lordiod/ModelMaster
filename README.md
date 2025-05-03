@@ -56,7 +56,7 @@ This app simplifies the process of selecting and evaluating classification algor
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 

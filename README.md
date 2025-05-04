@@ -11,6 +11,7 @@ ModelMaster is a Python-based GUI application designed to help users select the 
   - Decision Tree
   - Support Vector Machine (SVM)
   - Logistic Regression
+  - Linear Regression
 - **Model Training and Testing**: Train and test your model with a user-defined train-test split ratio.
 - **Performance Metrics**: View accuracy, precision, recall, F1 score, and confusion matrix.
 - **Model Saving and Loading**: Save trained models using the `pickle` library and reload them for evaluation.

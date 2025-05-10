@@ -2,7 +2,9 @@
 
 ModelMaster is a Python-based GUI application designed to help users select the best classification algorithm for their dataset. The application provides an intuitive interface for loading datasets, selecting features, training models, and evaluating their performance.
 
-![Model Master](Screenshots/Algorithm%20selection.png)
+<p align="center">
+  <img src="Screenshots/Algorithm%20selection.png" alt="Model Master">
+</p>
 
 ## Features
 

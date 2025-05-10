@@ -2,6 +2,8 @@
 
 ModelMaster is a Python-based GUI application designed to help users select the best classification algorithm for their dataset. The application provides an intuitive interface for loading datasets, selecting features, training models, and evaluating their performance.
 
+![Model Master](qr-code.png)
+
 ## Features
 
 - **Dataset Loader**: Load your preprocessed dataset in CSV format.
@@ -23,17 +25,60 @@ ModelMaster is a Python-based GUI application designed to help users select the 
 3. **Algorithm Selection**: Choose a classification algorithm to evaluate:
    - For KNN, specify the number of neighbors.
    - For Decision Tree, specify the maximum depth.
+   - For SVM, select a kernel type (linear, rbf, poly, or sigmoid).
 4. **Train and Test**: Specify the train-test split ratio and train your model.
 5. **View Results**: The app displays performance metrics such as accuracy, precision, recall, F1 score, and confusion matrix.
 6. **Save and Load Models**: Save your trained model for future use or load an existing model to view its details.
 
+## Project Structure
+
+The project follows the Model-View-Controller (MVC) architecture:
+
+```
+ModelMaster/
+│
+├── main.py                    # Main entry point for the application
+├── README.md                  # Project documentation
+├── requirements.txt           # Project dependencies
+│
+├── src/                       # Source code directory
+│   ├── model/                 # Model components
+│   │   ├── __init__.py
+│   │   └── ml_models.py       # Machine learning model implementations
+│   │
+│   ├── view/                  # View components
+│   │   ├── __init__.py
+│   │   └── gui.py             # GUI implementation
+│   │
+│   └── controller/            # Controller components
+│       ├── __init__.py
+│       └── model_controller.py # Controller logic
+│
+├── tests/                     # Test directory
+│   ├── __init__.py
+│   ├── test_models.py         # Tests for model components
+│   └── test_controller.py     # Tests for controller components
+│
+├── Datasets/                  # Sample datasets for testing
+└── .gitignore                 # Git ignore file
+```
+
 ## Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/Lordiod/ModelMaster.git
 cd ModelMaster
+
+# Create a virtual environment (optional, but recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-python model_master_gui.py
+
+# Run the application
+python main.py
 ```
 
 ## Requirements
@@ -42,14 +87,33 @@ python model_master_gui.py
 - scikit-learn
 - pandas
 - numpy
-- tkinter
+- customtkinter (for modern GUI elements)
 - matplotlib
+
+## Development
+
+### Testing
+
+To run tests:
+
+```bash
+pytest
+```
+
+To run tests with coverage:
+
+```bash
+pytest --cov=src
+```
 
 ## Future Improvements
 
-- Enhanced model loader with additional details about the saved model.
-- Support for additional algorithms and preprocessing steps.
-- Improved error handling and user feedback.
+- Enhanced model loader with additional details about the saved model
+- Support for additional algorithms and preprocessing steps
+- Improved error handling and user feedback
+- Data visualization tools for exploratory data analysis
+- Hyperparameter tuning automation
+- Export functionality for model comparisons
 
 ## Why Use ModelMaster?
 

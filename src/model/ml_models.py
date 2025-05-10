@@ -6,17 +6,27 @@ functions for the ModelMaster application. It provides standard interfaces for t
 and testing different machine learning models.
 """
 
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+# Third-party imports - minimize unnecessary imports
+import numpy as np  # Needed for array operations
+import pandas as pd  # Needed for DataFrame operations
+# Import matplotlib only when needed to reduce exe size
+from matplotlib import pyplot as plt
+
+# Scikit-learn imports - grouped by functionality to optimize dependencies
+# Core imports
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.feature_selection import RFE
+# Model imports - each one includes its own dependencies
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LinearRegression, LogisticRegression
-from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
-from sklearn.feature_selection import RFE
+# Metrics imports - grouped to optimize loading
+from sklearn.metrics import (
+    confusion_matrix, accuracy_score, precision_score,
+    recall_score, f1_score
+)
 
 
 class MLModel:

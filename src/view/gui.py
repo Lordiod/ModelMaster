@@ -5,11 +5,16 @@ This module implements the GUI for the ModelMaster application using customtkint
 It handles user interactions and displays information using the controller to manage the logic.
 """
 
+# Standard library imports
+import os
+
+# Third-party imports
 import tkinter as tk
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 from tkinter import messagebox
 import customtkinter as ctk
-import os
+
+# Local application imports
 from src.controller.model_controller import ModelController
 
 

@@ -19,6 +19,7 @@ ModelMaster is a Python-based GUI application designed to help users select the 
 - **Model Training and Testing**: Train and test your model with a user-defined train-test split ratio.
 - **Performance Metrics**: View accuracy, precision, recall, F1 score, and confusion matrix.
 - **Model Saving and Loading**: Save trained models using the `pickle` library and reload them for evaluation.
+- **Modern User Interface**: Built with customtkinter for a sleek, modern appearance.
 
 ## How It Works
 
@@ -42,8 +43,10 @@ ModelMaster/
 ├── main.py                    # Main entry point for the application
 ├── README.md                  # Project documentation
 ├── requirements.txt           # Project dependencies
-│
+├── LICENSE                    # MIT License file
+|
 ├── src/                       # Source code directory
+│   ├── __init__.py
 │   ├── model/                 # Model components
 │   │   ├── __init__.py
 │   │   └── ml_models.py       # Machine learning model implementations
@@ -56,12 +59,16 @@ ModelMaster/
 │       ├── __init__.py
 │       └── model_controller.py # Controller logic
 │
-├── tests/                     # Test directory
-│   ├── __init__.py
-│   ├── test_models.py         # Tests for model components
-│   └── test_controller.py     # Tests for controller components
-│
 ├── Datasets/                  # Sample datasets for testing
+│   ├── iris.csv               # Famous Iris flower dataset
+│   ├── diabetes.csv           # Diabetes prediction dataset
+│   ├── Titanic.csv            # Titanic survival dataset
+│   ├── fake_bills.csv         # Counterfeit banknote detection
+│   └── pima-indians-diabetes.csv # Pima Indians diabetes dataset
+│
+├── Screenshots/               # Application screenshots
+│   └── Algorithm selection.png # UI screenshot
+│
 └── .gitignore                 # Git ignore file
 ```
 
@@ -81,22 +88,26 @@ pip install -r requirements.txt
 
 # Run the application
 python main.py
+
+# Or on Windows, you can also use:
+py main.py
 ```
 
 ## Requirements
 
 - Python 3.7+
-- scikit-learn
-- pandas
-- numpy
-- customtkinter (for modern GUI elements)
-- matplotlib
+- scikit-learn >= 0.24.0
+- pandas >= 1.2.0
+- numpy >= 1.20.0
+- customtkinter >= 4.6.0 (for modern GUI elements)
+- matplotlib >= 3.4.0
+- pickle-mixin >= 1.0.2 (for model persistence)
 
 ## Development
 
-### Testing
+### Future Testing
 
-To run tests:
+To run tests (once implemented):
 
 ```bash
 pytest
@@ -107,6 +118,8 @@ To run tests with coverage:
 ```bash
 pytest --cov=src
 ```
+
+Note: Testing framework will be implemented in future versions.
 
 ## Future Improvements
 

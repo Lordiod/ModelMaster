@@ -6,6 +6,7 @@ This is the main entry point for the ModelMaster application.
 It initializes the GUI and starts the application.
 """
 
+# Local application imports - only import what's needed
 from src.view.gui import ModelMasterGUI
 
 

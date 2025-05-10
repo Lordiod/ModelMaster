@@ -125,7 +125,7 @@ class ModelMasterGUI:
                    "• Customizable model parameters and configurations\n"
                    "• Detailed performance metrics and visualization tools\n"
                    "• Model persistence for saving and loading trained models\n\n"
-                   "Developed as part of research at [Institution] by the ALL IN team.\n"
+                   "Developed as part of research.\n"
                    "Version 1.0.0")
         messagebox.showinfo("Model Master Info", app_info)
 

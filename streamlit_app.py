@@ -7,6 +7,8 @@ Deploy with: streamlit run streamlit_app.py
 import matplotlib
 matplotlib.use("Agg")
 
+import os
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
@@ -81,6 +83,24 @@ ALGORITHMS = {
     "Support Vector Machine (SVM)": "svm",
 }
 
+SAMPLE_DATASETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Datasets")
+SAMPLE_DATASET_LABELS = {
+    "iris.csv": "🌸 Iris Flower Classification",
+    "diabetes.csv": "🩺 Diabetes Prediction",
+    "pima-indians-diabetes.csv": "🩺 Pima Indians Diabetes",
+    "Titanic.csv": "🚢 Titanic Survival",
+    "fake_bills.csv": "💵 Counterfeit Bill Detection",
+    "lung cancer survey.csv": "🫁 Lung Cancer Survey",
+}
+
+
+def list_sample_datasets():
+    """Returns the CSV filenames available in the bundled Datasets folder, sorted by label."""
+    if not os.path.isdir(SAMPLE_DATASETS_DIR):
+        return []
+    files = [f for f in os.listdir(SAMPLE_DATASETS_DIR) if f.lower().endswith(".csv")]
+    return sorted(files, key=lambda f: SAMPLE_DATASET_LABELS.get(f, f))
+
 # --------------------------------------------------------------------------- #
 # Session state
 # --------------------------------------------------------------------------- #
@@ -114,7 +134,7 @@ with st.sidebar:
     st.divider()
     st.markdown(
         "**Workflow**\n"
-        "1. Upload a CSV dataset\n"
+        "1. Upload a CSV or pick a sample dataset\n"
         "2. Choose feature count (RFE)\n"
         "3. Pick an algorithm & tune it\n"
         "4. Train, test, and review results\n"
@@ -160,16 +180,45 @@ with tab_train:
     controller: ModelController = st.session_state.controller
 
     st.markdown('<div class="mm-section-title"><span class="mm-step-label">1</span>Load Your Dataset</div>', unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("Upload a CSV dataset", type=["csv"], key="dataset_uploader")
 
-    if uploaded_file is not None and st.session_state.loaded_dataset_name != uploaded_file.name:
-        result = controller.load_dataset(uploaded_file)
-        if result["success"]:
-            st.session_state.loaded_dataset_name = uploaded_file.name
-            st.session_state.trained_algorithm_label = None
+    dataset_source = st.radio(
+        "Dataset source",
+        ["Upload my own CSV", "Use a sample dataset"],
+        horizontal=True,
+        label_visibility="collapsed",
+    )
+
+    if dataset_source == "Upload my own CSV":
+        uploaded_file = st.file_uploader("Upload a CSV dataset", type=["csv"], key="dataset_uploader")
+
+        if uploaded_file is not None and st.session_state.loaded_dataset_name != uploaded_file.name:
+            result = controller.load_dataset(uploaded_file)
+            if result["success"]:
+                st.session_state.loaded_dataset_name = uploaded_file.name
+                st.session_state.trained_algorithm_label = None
+            else:
+                st.session_state.loaded_dataset_name = None
+                st.error(result["message"])
+    else:
+        sample_files = list_sample_datasets()
+        if not sample_files:
+            st.warning("No sample datasets were found in the `Datasets/` folder.")
         else:
-            st.session_state.loaded_dataset_name = None
-            st.error(result["message"])
+            selected_sample = st.selectbox(
+                "Choose a sample dataset",
+                sample_files,
+                format_func=lambda f: SAMPLE_DATASET_LABELS.get(f, f),
+                key="sample_dataset_select",
+            )
+            sample_id = f"sample::{selected_sample}"
+            if st.session_state.loaded_dataset_name != sample_id:
+                result = controller.load_dataset(os.path.join(SAMPLE_DATASETS_DIR, selected_sample))
+                if result["success"]:
+                    st.session_state.loaded_dataset_name = sample_id
+                    st.session_state.trained_algorithm_label = None
+                else:
+                    st.session_state.loaded_dataset_name = None
+                    st.error(result["message"])
 
     dataset_ready = (
         controller.current_model is not None

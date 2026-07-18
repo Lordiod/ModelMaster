@@ -124,18 +124,29 @@ class MLModel:
             else:
                 y_pred = prediction
                 
-            self.metrics["conf_matrix"] = confusion_matrix(self.y_test, y_pred)
-            self.metrics["accuracy"] = accuracy_score(self.y_test, y_pred)
-            self.metrics["precision"] = precision_score(self.y_test, y_pred, zero_division=0)
-            self.metrics["recall"] = recall_score(self.y_test, y_pred, zero_division=0)
-            
-            # Calculate F1 score
-            self.metrics["f1_score"] = f1_score(self.y_test, y_pred, zero_division=0)
+            # precision/recall/f1 default to average='binary', which raises on
+            # multiclass targets - fall back to a weighted average in that case
+            average = "binary" if len(np.unique(self.y_test)) <= 2 else "weighted"
+
+            conf_matrix = confusion_matrix(self.y_test, y_pred)
+            accuracy = accuracy_score(self.y_test, y_pred)
+            precision = precision_score(self.y_test, y_pred, average=average, zero_division=0)
+            recall = recall_score(self.y_test, y_pred, average=average, zero_division=0)
+            f1 = f1_score(self.y_test, y_pred, average=average, zero_division=0)
+
+            self.metrics["conf_matrix"] = conf_matrix
+            self.metrics["accuracy"] = accuracy
+            self.metrics["precision"] = precision
+            self.metrics["recall"] = recall
+            self.metrics["f1_score"] = f1
 
             return True
-            
+
         except Exception as e:
             print(f"Testing failed: {str(e)}")
+            # Clear out any partial results so a failed test never leaves
+            # the UI with a mix of stale and missing metrics
+            self.metrics = {key: None for key in self.metrics}
             return False
     
     def get_confusion_matrix_figure(self):

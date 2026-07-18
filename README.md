@@ -3,7 +3,24 @@
 ModelMaster is a Streamlit web application designed to help users select the best classification algorithm for their dataset. The application provides an intuitive interface for loading datasets, selecting features, training models, and evaluating their performance — all from the browser, and deployable to Streamlit Community Cloud.
 
 <p align="center">
-  <img src="Screenshots/Algorithm%20selection.png" alt="Model Master">
+  <img src="Screenshots/Overview.jpg" alt="ModelMaster overview">
+</p>
+
+## Screenshots
+
+<p align="center">
+  <img src="Screenshots/Overview.jpg" alt="ModelMaster overview" width="800"><br>
+  <em>Overview — load a dataset and follow the guided workflow</em>
+</p>
+
+<p align="center">
+  <img src="Screenshots/Dataset%20Preview.jpg" alt="Dataset preview and feature selection" width="800"><br>
+  <em>Preview your dataset and select the top features with RFE</em>
+</p>
+
+<p align="center">
+  <img src="Screenshots/Training%20Results.jpg" alt="Algorithm selection and training results" width="800"><br>
+  <em>Pick an algorithm, tune it, and train/test your model</em>
 </p>
 
 ## Features
@@ -63,7 +80,9 @@ ModelMaster/
 │   └── pima-indians-diabetes.csv # Pima Indians diabetes dataset
 │
 ├── Screenshots/               # Application screenshots
-│   └── Algorithm selection.png # UI screenshot
+│   ├── Overview.jpg           # App overview
+│   ├── Dataset Preview.jpg    # Dataset preview & feature selection
+│   └── Training Results.jpg   # Algorithm selection & training results
 │
 └── .gitignore                 # Git ignore file
 ```

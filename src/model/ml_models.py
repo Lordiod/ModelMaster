@@ -138,12 +138,16 @@ class MLModel:
             print(f"Testing failed: {str(e)}")
             return False
     
-    def display_confusion_matrix(self):
-        """Displays the confusion matrix using matplotlib."""
+    def get_confusion_matrix_figure(self):
+        """Builds the confusion matrix visualization as a matplotlib Figure.
+
+        Returns:
+            matplotlib.figure.Figure or None: The figure, or None if no confusion
+            matrix is available yet.
+        """
         if self.metrics["conf_matrix"] is None:
-            print("Error: No confusion matrix available. Please test the model first.")
-            return
-            
+            return None
+
         fig, ax = plt.subplots(figsize=(5, 4))
         ax.matshow(self.metrics["conf_matrix"], cmap='Blues')
 
@@ -152,11 +156,11 @@ class MLModel:
             for j in range(self.metrics["conf_matrix"].shape[1]):
                 ax.text(j, i, str(self.metrics["conf_matrix"][i, j]), va='center', ha='center', fontsize=12)
 
-        plt.title('Confusion Matrix')
-        plt.xlabel('Predicted Labels')
-        plt.ylabel('True Labels')
-        plt.tight_layout()
-        plt.show()
+        ax.set_title('Confusion Matrix')
+        ax.set_xlabel('Predicted Labels')
+        ax.set_ylabel('True Labels')
+        fig.tight_layout()
+        return fig
 
 
 class LinearRegressionModel(MLModel):

@@ -1,6 +1,6 @@
 # ModelMaster
 
-ModelMaster is a Python-based GUI application designed to help users select the best classification algorithm for their dataset. The application provides an intuitive interface for loading datasets, selecting features, training models, and evaluating their performance.
+ModelMaster is a Streamlit web application designed to help users select the best classification algorithm for their dataset. The application provides an intuitive interface for loading datasets, selecting features, training models, and evaluating their performance — all from the browser, and deployable to Streamlit Community Cloud.
 
 <p align="center">
   <img src="Screenshots/Algorithm%20selection.png" alt="Model Master">
@@ -19,7 +19,7 @@ ModelMaster is a Python-based GUI application designed to help users select the 
 - **Model Training and Testing**: Train and test your model with a user-defined train-test split ratio.
 - **Performance Metrics**: View accuracy, precision, recall, F1 score, and confusion matrix.
 - **Model Saving and Loading**: Save trained models using the `pickle` library and reload them for evaluation.
-- **Modern User Interface**: Built with customtkinter for a sleek, modern appearance.
+- **Modern Web Interface**: Built with Streamlit — accessible from any browser and deployable with one click.
 
 ## How It Works
 
@@ -40,7 +40,7 @@ The project follows the Model-View-Controller (MVC) architecture:
 ```
 ModelMaster/
 │
-├── main.py                    # Main entry point for the application
+├── streamlit_app.py           # Main entry point for the Streamlit application
 ├── README.md                  # Project documentation
 ├── requirements.txt           # Project dependencies
 ├── LICENSE                    # MIT License file
@@ -50,10 +50,6 @@ ModelMaster/
 │   ├── model/                 # Model components
 │   │   ├── __init__.py
 │   │   └── ml_models.py       # Machine learning model implementations
-│   │
-│   ├── view/                  # View components
-│   │   ├── __init__.py
-│   │   └── gui.py             # GUI implementation
 │   │
 │   └── controller/            # Controller components
 │       ├── __init__.py
@@ -87,11 +83,19 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # Run the application
-python main.py
-
-# Or on Windows, you can also use:
-py main.py
+streamlit run streamlit_app.py
 ```
+
+The app will open automatically in your browser at `http://localhost:8501`.
+
+## Deployment
+
+ModelMaster is ready to deploy on [Streamlit Community Cloud](https://streamlit.io/cloud):
+
+1. Push this repository to GitHub.
+2. Sign in to Streamlit Community Cloud and click "New app".
+3. Point it at this repo/branch with `streamlit_app.py` as the main file.
+4. Deploy — no additional configuration needed.
 
 ## Requirements
 
@@ -99,9 +103,8 @@ py main.py
 - scikit-learn >= 0.24.0
 - pandas >= 1.2.0
 - numpy >= 1.20.0
-- customtkinter >= 4.6.0 (for modern GUI elements)
+- streamlit >= 1.30.0
 - matplotlib >= 3.4.0
-- pickle-mixin >= 1.0.2 (for model persistence)
 
 ## Development
 
